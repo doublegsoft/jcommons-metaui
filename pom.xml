@@ -1,0 +1,135 @@
+<!--
+ ~ DOUBLEGSOFT.COM CONFIDENTIAL
+ ~
+ ~ [2016] - [?] doublegsoft.com
+ ~
+ ~ All Rights Reserved.
+ ~
+ ~ NOTICE:  All information contained herein is, and remains
+ ~ the property of doublegsoft.com and its suppliers, if any.
+ ~ The intellectual and technical concepts contained herein
+ ~ are proprietary to doublegsoft.com and its suppliers  and
+ ~ may be covered by China and Foreign Patents, patents in
+ ~ process, and are protected by trade secret or copyright law.
+ ~
+ ~ Dissemination of this information or reproduction of this material
+ ~ is strictly forbidden unless prior written permission is obtained
+ ~ from doublegsoft.com.
+ -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.doublegsoft.jcommons</groupId>
+  <artifactId>jcommons-metaui</artifactId>
+  <version>5.0</version>
+	
+  <distributionManagement>
+    <repository>
+      <id>doublegsoft-releases</id>
+      <name>doublegsoft internal releases</name>
+      <url>http://nexus.doublegsoft.com:8081/repository/maven-releases</url>
+    </repository>
+  </distributionManagement>
+        
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.5.1</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.19.1</version>
+        <configuration>
+          <skipTests>false</skipTests>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>2.4</version>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.10.4</version>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.antlr</groupId>
+        <artifactId>antlr4-maven-plugin</artifactId>
+        <version>4.7</version>
+        <configuration></configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>antlr4</goal>
+            </goals>
+            <configuration>
+              <arguments>
+                <argument>-package</argument>
+                <argument>com.doublegsoft.jcommons.metaui</argument>
+              </arguments>
+<!--              <encoding>UTF-8</encoding>-->
+              <libDirectory>${basedir}/src/main/resources/antlr4</libDirectory>
+              <sourceDirectory>${basedir}/src/main/resources/antlr4</sourceDirectory>
+              <outputDirectory></outputDirectory>
+              <listener>true</listener>
+              <visitor>true</visitor>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+    
+  <dependencies>
+    <dependency>
+      <groupId>com.doublegsoft.jcommons</groupId>
+      <artifactId>jcommons-lang</artifactId>
+      <version>2.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.antlr</groupId>
+      <artifactId>antlr4-runtime</artifactId>
+      <version>4.9.3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.yaml</groupId>
+      <artifactId>snakeyaml</artifactId>
+      <version>1.16</version>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+    
+</project>
