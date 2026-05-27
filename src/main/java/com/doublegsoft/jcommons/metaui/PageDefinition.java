@@ -55,6 +55,11 @@ public class PageDefinition extends WidgetDefinition {
     return getWidgetsInternally(this);
   }
 
+  @Override
+  public List<WidgetDefinition> getWidgets() {
+    return getWidgetsInternally(this);
+  }
+
   public String getTitle() {
     return title;
   }
@@ -77,11 +82,6 @@ public class PageDefinition extends WidgetDefinition {
 
   public final void setName(String name) {
     this.name = name;
-  }
-
-  @Override
-  public List<WidgetDefinition> getWidgets() {
-    return getWidgetsInternally(this);
   }
 
   @Override
