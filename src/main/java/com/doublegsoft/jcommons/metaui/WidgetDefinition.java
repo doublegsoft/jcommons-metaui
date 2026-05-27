@@ -67,9 +67,9 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
 
   protected Size size = Size.DEFAULT;
 
-  private final Options options = new Options();
+  protected final Options options = new Options();
 
-  private final List<WidgetDefinition> widgets = new ArrayList<>();
+  protected final List<WidgetDefinition> widgets = new ArrayList<>();
 
   public static WidgetDefinition from(String id, Options options) {
     WidgetDefinition retVal = new WidgetDefinition();

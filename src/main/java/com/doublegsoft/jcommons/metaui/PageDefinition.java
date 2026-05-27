@@ -115,7 +115,7 @@ public class PageDefinition extends WidgetDefinition {
 
   private List<WidgetDefinition> getWidgets(WidgetDefinition widget) {
     List<WidgetDefinition> retVal = new ArrayList<>();
-    widget.getWidgets().forEach(child -> {
+    widget.widgets.forEach(child -> {
       retVal.add(child);
       retVal.addAll(getWidgets(child));
     });
