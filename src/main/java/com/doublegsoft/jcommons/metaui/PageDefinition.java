@@ -79,6 +79,10 @@ public class PageDefinition extends WidgetDefinition {
     this.name = name;
   }
 
+  public List<WidgetDefinition> getWidgets() {
+    return getPageWidgets();
+  }
+
   private List<WidgetDefinition> getWidgets(WidgetDefinition widget) {
     List<WidgetDefinition> retVal = new ArrayList<>();
     widget.getWidgets().forEach(child -> {

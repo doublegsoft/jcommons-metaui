@@ -20,6 +20,8 @@ package com.doublegsoft.jcommons.metaui;
 
 import com.doublegsoft.jcommons.metaui.layout.Position;
 import com.doublegsoft.jcommons.metaui.layout.Size;
+import com.doublegsoft.jcommons.utils.Strings;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -128,7 +130,6 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
   public List<WidgetDefinition> getWidgets() {
     List<WidgetDefinition> retVal = new ArrayList<>();
     retVal.addAll(widgets);
-    // Collections.sort(retVal);
     return retVal;
   }
 
@@ -194,6 +195,10 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
     options.put(attr, value);
   }
 
+  public List<WidgetDefinition> getInputs() {
+    return getInputs(this);
+  }
+
   @Override
   public int compareTo(WidgetDefinition o) {
     if (position == null) {
@@ -233,4 +238,17 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
     return true;
   }
 
+  private List<WidgetDefinition> getInputs(WidgetDefinition parent) {
+    List<WidgetDefinition> retVal = new ArrayList<>();
+    for (WidgetDefinition child : parent.widgets) {
+      if (Strings.in(child.type, "date", "time", "text", "longtext",
+          "check", "radio", "optionaltext", "tags",
+          "select", "cascade", "district")) {
+        retVal.add(child);
+      } else {
+        retVal.addAll(getInputs(child));
+      }
+    }
+    return retVal;
+  }
 }
