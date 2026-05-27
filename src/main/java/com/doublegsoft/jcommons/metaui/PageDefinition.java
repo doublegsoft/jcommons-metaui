@@ -79,17 +79,9 @@ public class PageDefinition extends WidgetDefinition {
     this.name = name;
   }
 
+  @Override
   public List<WidgetDefinition> getWidgets() {
-    return getPageWidgets();
-  }
-
-  private List<WidgetDefinition> getWidgets(WidgetDefinition widget) {
-    List<WidgetDefinition> retVal = new ArrayList<>();
-    widget.getWidgets().forEach(child -> {
-      retVal.add(child);
-      retVal.addAll(getWidgets(child));
-    });
-    return retVal;
+    return getWidgets(this);
   }
 
   @Override
@@ -121,4 +113,12 @@ public class PageDefinition extends WidgetDefinition {
     return true;
   }
 
+  private List<WidgetDefinition> getWidgets(WidgetDefinition widget) {
+    List<WidgetDefinition> retVal = new ArrayList<>();
+    widget.getWidgets().forEach(child -> {
+      retVal.add(child);
+      retVal.addAll(getWidgets(child));
+    });
+    return retVal;
+  }
 }
