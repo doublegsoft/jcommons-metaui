@@ -196,7 +196,7 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
   }
 
   public List<WidgetDefinition> getInputs() {
-    return getInputs(this);
+    return getInputsInternally(this);
   }
 
   @Override
@@ -238,7 +238,7 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
     return true;
   }
 
-  private List<WidgetDefinition> getInputs(WidgetDefinition parent) {
+  private List<WidgetDefinition> getInputsInternally(WidgetDefinition parent) {
     List<WidgetDefinition> retVal = new ArrayList<>();
     for (WidgetDefinition child : parent.widgets) {
       if (Strings.in(child.type, "date", "time", "text", "longtext",
@@ -246,7 +246,7 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
           "select", "cascade", "district")) {
         retVal.add(child);
       } else {
-        retVal.addAll(getInputs(child));
+        retVal.addAll(getInputsInternally(child));
       }
     }
     return retVal;

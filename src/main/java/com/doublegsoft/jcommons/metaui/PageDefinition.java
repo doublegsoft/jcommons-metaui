@@ -52,7 +52,7 @@ public class PageDefinition extends WidgetDefinition {
   }
 
   public List<WidgetDefinition> getPageWidgets() {
-    return getWidgets(this);
+    return getWidgetsInternally(this);
   }
 
   public String getTitle() {
@@ -81,7 +81,7 @@ public class PageDefinition extends WidgetDefinition {
 
   @Override
   public List<WidgetDefinition> getWidgets() {
-    return getWidgets(this);
+    return getWidgetsInternally(this);
   }
 
   @Override
@@ -113,11 +113,11 @@ public class PageDefinition extends WidgetDefinition {
     return true;
   }
 
-  private List<WidgetDefinition> getWidgets(WidgetDefinition widget) {
+  private List<WidgetDefinition> getWidgetsInternally(WidgetDefinition widget) {
     List<WidgetDefinition> retVal = new ArrayList<>();
     widget.widgets.forEach(child -> {
       retVal.add(child);
-      retVal.addAll(getWidgets(child));
+      retVal.addAll(getWidgetsInternally(child));
     });
     return retVal;
   }
