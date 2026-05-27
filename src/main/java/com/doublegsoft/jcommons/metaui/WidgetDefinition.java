@@ -241,7 +241,8 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
   private List<WidgetDefinition> getInputsInternally(WidgetDefinition parent) {
     List<WidgetDefinition> retVal = new ArrayList<>();
     for (WidgetDefinition child : parent.widgets) {
-      if (Strings.in(child.type, "date", "time", "text", "longtext",
+      if (Strings.in(child.type,
+          "date", "time", "text", "longtext", "number",
           "check", "radio", "optionaltext", "tags",
           "select", "cascade", "district")) {
         retVal.add(child);
