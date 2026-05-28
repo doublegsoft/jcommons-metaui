@@ -199,6 +199,10 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
     return "true".equals(options.get("readonly"));
   }
 
+  public String getTitle() {
+    return options.get("title");
+  }
+
   public List<WidgetDefinition> getInputs() {
     return getInputsInternally(this);
   }
