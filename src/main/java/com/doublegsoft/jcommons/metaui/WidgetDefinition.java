@@ -133,6 +133,12 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
     return retVal;
   }
 
+  public List<WidgetDefinition> getChildren() {
+    List<WidgetDefinition> retVal = new ArrayList<>();
+    retVal.addAll(widgets);
+    return retVal;
+  }
+
   public String getId() {
     return id;
   }
