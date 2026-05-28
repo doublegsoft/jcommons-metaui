@@ -195,6 +195,10 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
     options.put(attr, value);
   }
 
+  public boolean isReadonly() {
+    return "true".equals(options.get("readonly"));
+  }
+
   public List<WidgetDefinition> getInputs() {
     return getInputsInternally(this);
   }
