@@ -310,8 +310,8 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
     for (WidgetDefinition child : parent.widgets) {
       if (Strings.in(child.type,
           "date", "time", "text", "longtext", "number",
-          "check", "radio", "optionaltext", "tags",
-          "select", "cascade", "district")) {
+          "check", "radio", "conditionaltext", "tags",
+          "select", "cascade", "district", "time", "multiselect")) {
         retVal.add(child);
       } else {
         retVal.addAll(getInputsInternally(child));
