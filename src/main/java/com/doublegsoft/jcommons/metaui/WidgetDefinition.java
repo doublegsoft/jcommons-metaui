@@ -20,6 +20,7 @@ package com.doublegsoft.jcommons.metaui;
 
 import com.doublegsoft.jcommons.metaui.layout.Position;
 import com.doublegsoft.jcommons.metaui.layout.Size;
+import com.doublegsoft.jcommons.utils.Safe;
 import com.doublegsoft.jcommons.utils.Strings;
 
 import java.util.*;
@@ -158,6 +159,31 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
       if (groupName.equals(name)) {
         retVal.add(child);
       }
+    }
+    return retVal;
+  }
+
+  public List<List<WidgetDefinition>> rows(String name, int cols) {
+    name = name == null ? "" : name;
+    List<WidgetDefinition> widgets = group(name);
+    List<List<WidgetDefinition>> retVal = new ArrayList<>();
+    List<WidgetDefinition> row = new ArrayList<>();
+    int spanInRow = 0;
+    for (WidgetDefinition widget : widgets) {
+      Integer span = Safe.safeInteger((String) widget.value("span"));
+      span = span == null ? 1 : span;
+      spanInRow += span;
+      if (spanInRow <= cols) {
+        row.add(widget);
+      } else {
+        retVal.add(row);
+        row = new ArrayList<>();
+        row.add(widget);
+        spanInRow = span;
+      }
+    }
+    if (!row.isEmpty()) {
+      retVal.add(row);
     }
     return retVal;
   }
