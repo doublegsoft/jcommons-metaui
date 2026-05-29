@@ -22,10 +22,7 @@ import com.doublegsoft.jcommons.metaui.layout.Position;
 import com.doublegsoft.jcommons.metaui.layout.Size;
 import com.doublegsoft.jcommons.utils.Strings;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * It is to describe widget data.
@@ -139,6 +136,32 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
     return retVal;
   }
 
+  public List<String> groups() {
+    List<String> retVal = new ArrayList<>(); // 因为是有顺序的
+    Set<String> existing = new HashSet<>();
+    for (WidgetDefinition child : widgets) {
+      String groupName = child.value("group");
+      if (!Strings.isEmpty(groupName) && !existing.contains(groupName)) {
+        retVal.add(groupName);
+        existing.add(groupName);
+      }
+    }
+    return retVal;
+  }
+
+  public List<WidgetDefinition> group(String name) {
+    name = name == null ? "" : name;
+    List<WidgetDefinition> retVal = new ArrayList<>();
+    for (WidgetDefinition child : widgets) {
+      String groupName = child.value("group");
+      groupName = groupName == null ? "" : groupName;
+      if (groupName.equals(name)) {
+        retVal.add(child);
+      }
+    }
+    return retVal;
+  }
+
   public String getId() {
     return id;
   }
@@ -199,6 +222,10 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
   @Deprecated
   public void setValue(String attr, Object value) {
     options.put(attr, value);
+  }
+
+  public <T> T value(String attr) {
+    return options.get(attr);
   }
 
   public boolean isReadonly() {
