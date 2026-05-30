@@ -188,6 +188,10 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
     return retVal;
   }
 
+  public WidgetDefinition ancestor(String type) {
+    return ancestor(this, type);
+  }
+
   public String getId() {
     return id;
   }
@@ -318,5 +322,15 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
       }
     }
     return retVal;
+  }
+
+  private WidgetDefinition ancestor(WidgetDefinition present, String type) {
+    if (present == null || present.container == null) {
+      return null;
+    }
+    if (present.container.type.equals(type)) {
+      return present.container;
+    }
+    return ancestor(present.container, type);
   }
 }
