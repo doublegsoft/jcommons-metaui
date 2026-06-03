@@ -93,6 +93,15 @@ public class PageDefinition extends WidgetDefinition {
     return null;
   }
 
+  public boolean contains(String type) {
+    for (WidgetDefinition child : getWidgets()) {
+      if (type.equals(child.getType())) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   @Override
   public int hashCode() {
     int hash = 3;
