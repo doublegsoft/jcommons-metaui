@@ -316,7 +316,11 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
           "date", "time", "text", "longtext", "number",
           "check", "radio", "conditionaltext", "tags",
           "select", "cascade", "district", "time", "multiselect")) {
-        retVal.add(child);
+        if (child.ancestor("criteria_form") != null ||
+            child.ancestor("entry_form") != null ||
+            child.ancestor("excel_form") != null) {
+          retVal.add(child);
+        }
       } else {
         retVal.addAll(getInputsInternally(child));
       }
