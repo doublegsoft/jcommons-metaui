@@ -270,6 +270,10 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
     return getInputsInternally(this);
   }
 
+  public List<WidgetDefinition> getButtons() {
+    return getButtonsInternally(this);
+  }
+
   @Override
   public int compareTo(WidgetDefinition o) {
     if (position == null) {
@@ -321,6 +325,18 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
             child.ancestor("excel_form") != null) {
           retVal.add(child);
         }
+      } else {
+        retVal.addAll(getInputsInternally(child));
+      }
+    }
+    return retVal;
+  }
+
+  private List<WidgetDefinition> getButtonsInternally(WidgetDefinition parent) {
+    List<WidgetDefinition> retVal = new ArrayList<>();
+    for (WidgetDefinition child : parent.widgets) {
+      if (Strings.in(child.type, "button")) {
+        retVal.add(child);
       } else {
         retVal.addAll(getInputsInternally(child));
       }
