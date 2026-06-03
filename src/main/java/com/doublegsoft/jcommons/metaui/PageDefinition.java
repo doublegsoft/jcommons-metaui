@@ -84,6 +84,15 @@ public class PageDefinition extends WidgetDefinition {
     this.name = name;
   }
 
+  public WidgetDefinition byId(String id) {
+    for (WidgetDefinition child : getWidgets()) {
+      if (id.equals(child.getId())) {
+        return child;
+      }
+    }
+    return null;
+  }
+
   @Override
   public int hashCode() {
     int hash = 3;
