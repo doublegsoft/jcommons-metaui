@@ -254,8 +254,25 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
     options.put(attr, value);
   }
 
-  public <T> T value(String attr) {
-    return options.get(attr);
+  public String value(String attr) {
+    String retVal = options.get(attr);
+    if (retVal == null) {
+      return "";
+    }
+    return retVal;
+  }
+
+  public WidgetDefinition byRef() {
+    String ref = value("ref");
+    if (ref == null) {
+      return null;
+    }
+    for (WidgetDefinition child : page.getWidgets()) {
+      if (ref.equals(child.getId())) {
+        return child;
+      }
+    }
+    return null;
   }
 
   public boolean isReadonly() {

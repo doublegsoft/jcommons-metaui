@@ -96,7 +96,7 @@ public class PageDefinition extends WidgetDefinition {
   public List<WidgetDefinition> byType(String type) {
     List<WidgetDefinition> retVal = new ArrayList<>();
     for (WidgetDefinition child : getWidgets()) {
-      if (type.equals(child.getId())) {
+      if (type.equals(child.getType())) {
         retVal.add(child);
       }
     }
