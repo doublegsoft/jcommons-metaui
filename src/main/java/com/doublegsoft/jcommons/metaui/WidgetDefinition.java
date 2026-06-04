@@ -346,6 +346,7 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
           "select", "cascade", "district", "time", "multiselect")) {
         if (child.ancestor("criteria_form") != null ||
             child.ancestor("entry_form") != null ||
+            child.ancestor("display_form") != null ||
             child.ancestor("excel_form") != null) {
           retVal.add(child);
         }
