@@ -137,6 +137,15 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
     return retVal;
   }
 
+  public boolean contains(String type) {
+    for (WidgetDefinition child : getWidgets()) {
+      if (type.equals(child.getType())) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   public List<String> groups() {
     List<String> retVal = new ArrayList<>(); // 因为是有顺序的
     Set<String> existing = new HashSet<>();
