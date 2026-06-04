@@ -255,8 +255,15 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
   }
 
   public String value(String attr) {
+    return value(attr, null);
+  }
+
+  public String value(String attr, String defaultValue) {
     String retVal = options.get(attr);
     if (retVal == null) {
+      if (defaultValue != null) {
+        return defaultValue;
+      }
       return "";
     }
     return retVal;
