@@ -93,25 +93,6 @@ public class PageDefinition extends WidgetDefinition {
     return null;
   }
 
-  public List<WidgetDefinition> byType(String type) {
-    List<WidgetDefinition> retVal = new ArrayList<>();
-    for (WidgetDefinition child : getWidgets()) {
-      if (type.equals(child.getType())) {
-        retVal.add(child);
-      }
-    }
-    return retVal;
-  }
-
-  public boolean contains(String type) {
-    for (WidgetDefinition child : getWidgets()) {
-      if (type.equals(child.getType())) {
-        return true;
-      }
-    }
-    return false;
-  }
-
   @Override
   public int hashCode() {
     int hash = 3;

@@ -144,6 +144,16 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
     return false;
   }
 
+  public List<WidgetDefinition> byType(String type) {
+    List<WidgetDefinition> retVal = new ArrayList<>();
+    for (WidgetDefinition child : getWidgets()) {
+      if (type.equals(child.getType())) {
+        retVal.add(child);
+      }
+    }
+    return retVal;
+  }
+
   public List<String> groups() {
     List<String> retVal = new ArrayList<>(); // 因为是有顺序的
     Set<String> existing = new HashSet<>();
