@@ -141,12 +141,4 @@ public class PageDefinition extends WidgetDefinition {
     return true;
   }
 
-  private List<WidgetDefinition> getWidgetsInternally(WidgetDefinition widget) {
-    List<WidgetDefinition> retVal = new ArrayList<>();
-    widget.widgets.forEach(child -> {
-      retVal.add(child);
-      retVal.addAll(getWidgetsInternally(child));
-    });
-    return retVal;
-  }
 }

@@ -126,9 +126,7 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
    * @return the widgets
    */
   public List<WidgetDefinition> getWidgets() {
-    List<WidgetDefinition> retVal = new ArrayList<>();
-    retVal.addAll(widgets);
-    return retVal;
+    return getWidgetsInternally(this);
   }
 
   public List<WidgetDefinition> getChildren() {
@@ -344,6 +342,15 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
       return false;
     }
     return true;
+  }
+
+  protected List<WidgetDefinition> getWidgetsInternally(WidgetDefinition widget) {
+    List<WidgetDefinition> retVal = new ArrayList<>();
+    widget.widgets.forEach(child -> {
+      retVal.add(child);
+      retVal.addAll(getWidgetsInternally(child));
+    });
+    return retVal;
   }
 
   private List<WidgetDefinition> getInputsInternally(WidgetDefinition parent) {
