@@ -159,7 +159,10 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
     Set<String> existing = new HashSet<>();
     for (WidgetDefinition child : widgets) {
       String groupName = child.value("group");
-      if (!Strings.isEmpty(groupName) && !existing.contains(groupName)) {
+      if (groupName == null) {
+        groupName = "";
+      }
+      if (!existing.contains(groupName)) {
         retVal.add(groupName);
         existing.add(groupName);
       }
