@@ -190,6 +190,9 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
     List<WidgetDefinition> row = new ArrayList<>();
     int spanInRow = 0;
     for (WidgetDefinition widget : widgets) {
+      if ("button".equals(widget.getType())) {
+        continue;
+      }
       Integer span = Safe.safeInteger((String) widget.value("span"));
       span = span == null ? 1 : span;
       spanInRow += span;
