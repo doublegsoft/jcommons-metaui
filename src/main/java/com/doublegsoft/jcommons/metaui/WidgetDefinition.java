@@ -215,6 +215,15 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
     return ancestor(this, type);
   }
 
+  public boolean has(String type) {
+    for (WidgetDefinition child : getChildren()) {
+      if (child.type.equals(type)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   public String getId() {
     return id;
   }
