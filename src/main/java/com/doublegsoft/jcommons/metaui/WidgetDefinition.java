@@ -384,7 +384,8 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
       if (Strings.in(child.type,
           "date", "time", "text", "longtext", "number",
           "check", "radio", "conditionaltext", "tags",
-          "select", "cascade", "district", "time", "multiselect")) {
+          "select", "cascade", "district", "time", "multiselect",
+          "files", "images", "videos", "avatar")) {
         if (child.ancestor("criteria_form") != null ||
             child.ancestor("entry_form") != null ||
             child.ancestor("display_form") != null ||
