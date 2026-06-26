@@ -19,9 +19,9 @@
 package com.doublegsoft.jcommons.metaui;
 
 import com.doublegsoft.jcommons.metaui.layout.Size;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import com.doublegsoft.jcommons.utils.Strings;
+
+import java.util.*;
 
 /**
  * {@link PageDefinition} type encapsulates page data.
@@ -58,6 +58,16 @@ public class PageDefinition extends WidgetDefinition {
   @Override
   public List<WidgetDefinition> getWidgets() {
     return getWidgetsInternally(this);
+  }
+
+  public Set<String> getParams() {
+    Set<String> retVal = new HashSet<>();
+    for (WidgetDefinition widget : getWidgets()) {
+      if (!Strings.isEmpty(widget.value("param"))) {
+        retVal.add(widget.value("param"));
+      }
+    }
+    return retVal;
   }
 
   public String getTitle() {
