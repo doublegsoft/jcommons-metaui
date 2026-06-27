@@ -319,7 +319,11 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
   }
 
   public String getTitle() {
-    return options.get("title");
+    String title = options.get("title");
+    if (title == null) {
+      return "";
+    }
+    return title;
   }
 
   public List<WidgetDefinition> getInputs() {
