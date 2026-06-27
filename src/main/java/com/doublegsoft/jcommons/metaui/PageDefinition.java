@@ -103,6 +103,16 @@ public class PageDefinition extends WidgetDefinition {
     return null;
   }
 
+  public WidgetDefinition byVar(String variable) {
+    for (WidgetDefinition child : getWidgets()) {
+      String var = child.value("variable");
+      if (variable.equals(var)) {
+        return child;
+      }
+    }
+    return null;
+  }
+
   @Override
   public int hashCode() {
     int hash = 3;
