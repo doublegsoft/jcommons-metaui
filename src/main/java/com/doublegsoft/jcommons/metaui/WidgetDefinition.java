@@ -158,6 +158,10 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
     List<String> retVal = new ArrayList<>(); // 因为是有顺序的
     Set<String> existing = new HashSet<>();
     for (WidgetDefinition child : widgets) {
+      if ("hidden".equals(child.type)) {
+        // 忽略隐藏输入的分组
+        continue;
+      }
       String groupName = child.value("group");
       if (groupName == null) {
         groupName = "";
