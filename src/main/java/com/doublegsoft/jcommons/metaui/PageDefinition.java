@@ -60,6 +60,10 @@ public class PageDefinition extends WidgetDefinition {
     return getWidgetsInternally(this);
   }
 
+  public List<WidgetDefinition> getContainers() {
+    return getWidgetsInternally(this, 1);
+  }
+
   public Set<String> getParams() {
     Set<String> retVal = new HashSet<>();
     for (WidgetDefinition widget : getWidgets()) {

@@ -378,9 +378,20 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
   }
 
   protected List<WidgetDefinition> getWidgetsInternally(WidgetDefinition widget) {
+    return getWidgetsInternally(widget, 0);
+  }
+
+  protected List<WidgetDefinition> getWidgetsInternally(WidgetDefinition widget, int type) {
     List<WidgetDefinition> retVal = new ArrayList<>();
     widget.widgets.forEach(child -> {
-      retVal.add(child);
+      if (type == 1) {
+        if (Strings.in(widget.type, "entry_form", "display_form", "official_form", "excel_form",
+            "paged_table", "fixed_table", "paged_grid", "list_view", "split_list")) {
+          retVal.add(child);
+        }
+      } else {
+        retVal.add(child);
+      }
       retVal.addAll(getWidgetsInternally(child));
     });
     return retVal;
