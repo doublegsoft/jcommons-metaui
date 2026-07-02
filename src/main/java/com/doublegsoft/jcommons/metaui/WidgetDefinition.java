@@ -389,7 +389,7 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
             "paged_table", "fixed_table", "paged_grid", "list_view", "split_list")) {
           retVal.add(child);
         }
-      } else {
+      } else if (type == 0){
         retVal.add(child);
       }
       retVal.addAll(getWidgetsInternally(child, type));
