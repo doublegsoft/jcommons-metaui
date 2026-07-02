@@ -385,11 +385,11 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
     List<WidgetDefinition> retVal = new ArrayList<>();
     widget.widgets.forEach(child -> {
       if (type == 1) {
-        if (Strings.in(widget.type, "entry_form", "display_form", "official_form", "excel_form",
+        if (Strings.in(child.type, "entry_form", "display_form", "official_form", "excel_form",
             "paged_table", "fixed_table", "paged_grid", "list_view", "split_list")) {
           retVal.add(child);
         }
-      } else if (type == 0){
+      } else {
         retVal.add(child);
       }
       retVal.addAll(getWidgetsInternally(child, type));
