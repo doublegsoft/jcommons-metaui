@@ -392,7 +392,7 @@ public class WidgetDefinition implements Comparable<WidgetDefinition> {
       } else {
         retVal.add(child);
       }
-      retVal.addAll(getWidgetsInternally(child));
+      retVal.addAll(getWidgetsInternally(child, type));
     });
     return retVal;
   }
